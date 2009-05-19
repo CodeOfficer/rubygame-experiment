@@ -3,3 +3,9 @@ class NilClass
     nil
   end
 end
+
+class Class
+  def shortname
+    name().gsub(/^.*:/, '')
+  end
+end

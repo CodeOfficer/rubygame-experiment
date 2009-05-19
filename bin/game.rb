@@ -5,6 +5,18 @@ require "pp"
 
 Dir.glob(File.join(File.dirname(__FILE__), '../lib/*.rb')).each {|f| require f }
 
+
+class FakeGame 
+attr_accessor :map 
+end 
+class FakePlayer 
+attr_accessor :game 
+end
+
+player = FakePlayer.new 
+player.game = FakeGame.new 
+
+
 forest = Terrain.new("Forest")
 grass = Terrain.new("Grass")
 mountains = Terrain.new("Mountains")
@@ -28,6 +40,11 @@ layout = <<-END
   ggpgggwwff
 END
 
-map = Map.new terrain_key, layout
+# map = Map.new terrain_key, layout
+# pp map.near_positions(2, 3, 3)
 
-pp map.near_positions(2, 3, 3)
+player.game.map = Map.new(terrain_key, layout)
+dixie = Unit.new(player, "Dixie") 
+player.game.map.place(0, 0, dixie) 
+dixie.move(1, 0)
+pp player.game.map.rep
