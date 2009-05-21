@@ -1,25 +1,17 @@
 
 class LocationOccupiedError < Exception; end
 
-
-# accepts key as a hash
-# accepts layout as a map in string format
-# gggggggggg
-# gggggggwww
-# ggggggwwff
-# gggppppppp
-# ggppggwfpf
-# ggpgggwwff
 class Map
   attr_reader :terrain, :units
+  attr_reader :width, :height
   
   def initialize(key, layout)
     rows = layout.split("\n")
     rows.collect! { |row| row.gsub(/\s+/, '').split(//) }
-    y = rows.size
-    x = rows[0].size
-    @terrain = Matrix.new(x, y)
-    @units = Matrix.new(x, y)
+    @height = rows.size
+    @width = rows[0].size
+    @terrain = Matrix.new(@width, @height)
+    @units = Matrix.new(@width, @height)
     rows.each_with_index do |row, y|
       row.each_with_index do |glyph, x|
         @terrain[x, y] = key[glyph]

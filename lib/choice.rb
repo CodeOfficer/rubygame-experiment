@@ -12,3 +12,6 @@ class Choice
 end 
 
 DONE = Choice.new("Done")
+
+# p DONE.to_yaml
+# p ["Done", DONE].include?(DONE)
