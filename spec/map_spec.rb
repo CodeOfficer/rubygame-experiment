@@ -1,7 +1,4 @@
 require File.expand_path(File.join('.', 'spec_helper'), File.dirname(__FILE__))
-require 'matrix' 
-require 'map' 
-require 'terrain' 
 #  -----------------------------------------------------------------------------
 
 describe Map, "When I create a map, it" do
@@ -18,7 +15,7 @@ describe Map, "When I create a map, it" do
       "p" => plains,
       "w" => water,
     }
-    @map = Map.new terrain_key, <<-END
+    terrain_layout = <<-END
       gggggggggg
       gggggggwww
       ggggggwwff
@@ -26,9 +23,10 @@ describe Map, "When I create a map, it" do
       ggppggwfpf
       ggpgggwwff
     END
+    @map = Map.new terrain_key, terrain_layout
   end
 
   it "should calculate as +" do
-    @map.width.should == 2
+    @map.width.should == 10
   end
 end
