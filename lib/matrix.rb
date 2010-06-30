@@ -25,6 +25,17 @@ class Matrix
     end.inject([]) { |a, b| a.concat b }
   end
   
+  def to_s
+    str = @data.inject('') do |result, row| 
+      result + row.collect {|x| x.class.to_s }.join(' ') + "\n"
+    end
+    puts "\n#{str}"
+    
+    # @data.each do |row|
+    #   puts row.collect {|x| x.class.to_s }.join(' ')
+    # end
+  end
+  
   def rep
     @data.collect do |row|
       row.collect do |item|

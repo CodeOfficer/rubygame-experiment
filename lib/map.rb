@@ -32,7 +32,11 @@ class Map
   end
   
   def all_positions
-    @terrain.all_positions    
+    @terrain.all_positions
+  end
+  
+  def to_s
+    @terrain.to_s
   end
 
   def within?(distance, x1, y1, x2, y2)

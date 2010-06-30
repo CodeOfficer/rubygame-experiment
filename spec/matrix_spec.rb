@@ -12,6 +12,6 @@ describe Matrix, "When I create a matrix, it" do
   end
 
   it "should xxx" do
-    pp @matrix.all_positions
+    pp @matrix.to_s
   end
 end

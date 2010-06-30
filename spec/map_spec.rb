@@ -1,5 +1,9 @@
 require File.expand_path(File.join('.', 'spec_helper'), File.dirname(__FILE__))
 #  -----------------------------------------------------------------------------
+# 
+# require "map"
+# require "terrain"
+# require "matrix"
 
 describe Map, "When I create a map, it" do
   before(:each) do
@@ -28,5 +32,9 @@ describe Map, "When I create a map, it" do
 
   it "should calculate as +" do
     @map.width.should == 10
+  end
+
+  it "should display as a string" do
+    @map.to_s
   end
 end
